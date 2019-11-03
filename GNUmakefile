@@ -34,9 +34,7 @@ tree-sitter-module.so: $(sources:.c=.o) externals/tree-sitter/libtree-sitter.o
 	$(CC) -shared -fPIC -o $@ $^
 
 # Build step derived from tree-sitter's "build-lib" script.
-externals/tree-sitter/libtree-sitter.o: externals/tree-sitter/lib/utf8proc/utf8proc.c \
-  externals/tree-sitter/lib/utf8proc/utf8proc.h \
-  $(wildcard externals/tree-sitter/lib/src/*.c) \
+externals/tree-sitter/libtree-sitter.o: $(wildcard externals/tree-sitter/lib/src/*.c) \
   $(wildcard externals/tree-sitter/lib/include/tree_sitter/*)
 	$(CC) -c -fPIC -O3 -std=c99 -Iexternals/tree-sitter/lib/src \
 	      -Iexternals/tree-sitter/lib/include \
@@ -64,7 +62,6 @@ tree-sitter-%.tar: tree-sitter-module.so $(wildcard lisp/*.el)
 
 submod:
 	git submodule update --init externals/tree-sitter
-	cd externals/tree-sitter && git submodule update --init lib/utf8proc
 
 clean:
 	rm -f src/*.o src/*.d src/*.d.*
