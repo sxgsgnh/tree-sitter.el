@@ -38,7 +38,6 @@ externals/tree-sitter/libtree-sitter.o: $(wildcard externals/tree-sitter/lib/src
   $(wildcard externals/tree-sitter/lib/include/tree_sitter/*)
 	$(CC) -c -fPIC -O3 -std=c99 -Iexternals/tree-sitter/lib/src \
 	      -Iexternals/tree-sitter/lib/include \
-	      -Iexternals/tree-sitter/lib/utf8proc \
 	      externals/tree-sitter/lib/src/lib.c \
 	      -o $@
 
