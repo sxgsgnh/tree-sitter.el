@@ -29,6 +29,16 @@
 Users should not call this function."
   (record 'tree-sitter-language ptr))
 
+(defun tree-sitter-query--create (ptr)
+  "Create a new tree-sitter-query record.
+Users should not call this function."
+  (record 'tree-sitter-query ptr))
+
+(defun tree-sitter-query-cursor--create (ptr)
+  "Create a new tree-sitter-query-cursor record.
+Users should not call this function."
+  (record 'tree-sitter-query-cursor ptr))
+
 (defun tree-sitter-symbol--create (code)
   "Create a new tree-sitter-symbol record.
 Users should not call this function."
@@ -66,6 +76,11 @@ Users should not call this function."
 (defun tree-sitter-point-col (point)
   "Return the column of a tree-sitter-point record, POINT."
   (aref point 2))
+
+(defun tree-sitter-query-match--create (count node id index)
+  "Create a new tree-sitter-query-match record.
+Users should not call this function."
+  (record 'tree-sitter-query-match count node id index))
 
 (defun tree-sitter-position-to-point (&optional position)
   "Convert a buffer location POSITION to a tree-sitter-point record.
