@@ -160,7 +160,7 @@ tsel_query_disable_capture(emacs_env *env,
   TSEL_SUBR_EXTRACT(query,env,args[0],&q);
   TSEL_SUBR_EXTRACT(string,env,args[1],&str);
   ts_query_disable_capture(q->query,str,strlen(str));
-  return tsel_Qt;
+  return tsel_Qnil;
 }
 
 static const char *tsel_query_pattern_count_doc =
@@ -191,7 +191,8 @@ tsel_query_start_byte_for_pattern(emacs_env *env,
   intmax_t id;
   TSEL_SUBR_EXTRACT(query,env,args[0],&q);
   TSEL_SUBR_EXTRACT(integer,env,args[1],&id);
-  return env->make_integer(env,ts_query_start_byte_for_pattern(q->query,id));
+  uint32_t byte = ts_query_start_byte_for_pattern(q->query,id)
+  return env->make_integer(env,byte+1);
 }
 
 static const char *tsel_query_p_wrapped_doc = "Return t if OBJECT is a tree-sitter-query.\n"

@@ -83,7 +83,7 @@ static emacs_value tsel_query_cursor_exec(emacs_env *env,
   TSEL_SUBR_EXTRACT(node,env,args[2],&node);
   qcursor->node = node;
   ts_query_cursor_exec(qcursor->cursor,query->query,node->node);
-  return tsel_Qt;
+  return tsel_Qnil;
 }
 
 static const char *tsel_query_cursor_next_capture_doc = "Advance to the next capture of the currently running query.\n"
@@ -143,7 +143,7 @@ static emacs_value tsel_query_cursor_remove_match(emacs_env *env,
   TSEL_SUBR_EXTRACT(qcursor,env,args[0],&qcursor);
   TSEL_SUBR_EXTRACT(integer,env,args[1],&id);
   ts_query_cursor_remove_match(qcursor->cursor,id);
-  return tsel_Qt;
+  return tsel_Qnil;
 }
 
 static const char *tsel_query_cursor_set_byte_range_doc = "Set the range of bytes or (row, column) positions in which the query will be executed.\n"
@@ -158,8 +158,8 @@ static emacs_value tsel_query_cursor_set_byte_range(emacs_env *env,
   TSEL_SUBR_EXTRACT(qcursor,env,args[0],&qcursor);
   TSEL_SUBR_EXTRACT(integer,env,args[1],&start);
   TSEL_SUBR_EXTRACT(integer,env,args[2],&end);
-  ts_query_cursor_set_byte_range(qcursor->cursor,start,end);
-  return tsel_Qt;
+  ts_query_cursor_set_byte_range(qcursor->cursor,start-1,end-1);
+  return tsel_Qnil;
 }
 
 static const char *tsel_query_cursor_set_point_range_doc = "Set the range of bytes or (row, column) positions in which the query will be executed.\n"
@@ -175,7 +175,7 @@ static emacs_value tsel_query_cursor_set_point_range(emacs_env *env,
   TSEL_SUBR_EXTRACT(point,env,args[1],&pt1);
   TSEL_SUBR_EXTRACT(point,env,args[1],&pt2);
   ts_query_cursor_set_point_range(qcursor->cursor,pt1,pt2);
-  return tsel_Qt;
+  return tsel_Qnil;
 }
 
 static const char *tsel_query_cursor_p_doc = "Return t if OBJECT is a tree-sitter-query-cursor.\n"
