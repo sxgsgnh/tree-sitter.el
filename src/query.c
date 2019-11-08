@@ -191,7 +191,7 @@ tsel_query_start_byte_for_pattern(emacs_env *env,
   intmax_t id;
   TSEL_SUBR_EXTRACT(query,env,args[0],&q);
   TSEL_SUBR_EXTRACT(integer,env,args[1],&id);
-  uint32_t byte = ts_query_start_byte_for_pattern(q->query,id)
+  uint32_t byte = ts_query_start_byte_for_pattern(q->query,id);
   return env->make_integer(env,byte+1);
 }
 

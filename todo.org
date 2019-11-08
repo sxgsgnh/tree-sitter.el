@@ -88,3 +88,23 @@
 - [X] ts_language_field_count
 - [X] ts_language_field_name_for_id
 - [X] ts_language_field_id_for_name
+*** Query [80%]
+- [X] ts_query_new
+- [ ] ts_query_delete
+- [X] ts_query_capture_count
+- [X] ts_query_capture_name_for_id
+- [X] ts_query_string_count
+- [X] ts_query_string_value_for_id
+- [X] ts_query_disable_capture
+- [X] ts_query_pattern_count
+- [X] ts_query_start_byte_for_pattern
+- [ ] ts_query_predicates_for_pattern
+*** QueryCursor [87%]
+- [X] ts_query_cursor_new
+- [ ] ts_query_cursor_delete
+- [X] ts_query_cursor_exec
+- [X] ts_query_cursor_next_capture
+- [X] ts_query_cursor_next_match
+- [X] ts_query_cursor_remove_match
+- [X] ts_query_cursor_set_byte_range
+- [X] ts_query_cursor_set_point_range
